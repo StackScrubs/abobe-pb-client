@@ -1,3 +1,3 @@
-const char* API_BASE_URL = "api.somethingsomething.com/api";
+const char* API_URL_GETKEY = "https://ctf.idi.ntnu.no/abobeapi/getkey";
 
 void connect();
