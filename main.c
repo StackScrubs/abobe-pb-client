@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include "api.h"
 
+const int LICENSE_KEY_SIZE = 100;
 const int MAX_EMAIL_SIZE = 64;
 const int MAX_PASSWORD_SIZE = 64;
 
@@ -27,18 +28,18 @@ int main(int argc, char* argv) {
     }
 
     printf("Welcome!\nTo continue, please use the menu below:\n");
-    provide_user_interface();
+    provide_user_interface(user_email);
 
     connect();
 
     return 0;
 }
 
-void provide_user_interface() {
+void provide_user_interface(const char* user_email) {
     printf("1. Open Abobe Photobop\n");
     printf("2. Open Abobe website\n");
-    printf("3. Enter and claim a licence key\n");
-    printf("4. Purchase a licence key\n");
+    printf("3. Enter and claim a license key\n");
+    printf("4. Purchase a license key\n");
     printf("\n");
 
     int input = 0;
@@ -57,6 +58,13 @@ void provide_user_interface() {
         break;
 
     case 3:
+        char license_key[LICENSE_KEY_SIZE];
+        printf("Please enter your license key: ");
+        scanf("%s", license_key);
+        printf("\n");
+
+        get_license_key(user_email);
+
         printf("Not yet implemented..\n");
         break;
 
@@ -66,7 +74,7 @@ void provide_user_interface() {
     
     default:
         printf("Invalid input.\nPlease try again..\n");
-        provide_user_interface();
+        provide_user_interface(user_email);
         break;
     }
 }
